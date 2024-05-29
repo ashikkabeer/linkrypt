@@ -2,7 +2,6 @@
 
 # Linkrypt
 
-## Description
 Linkrypt is a minimalistic and secure platform for managing private links. It provides users with a discreet and efficient way to organize and share private links within a centralized hub.
 
 ## Features
