@@ -2,12 +2,13 @@ import { Link } from '../models/link.model';
 import linkModel from '../models/link.model';
 
 export default {
-  create: async (data:Link) => {
+  create: async (workspaceId:number, data:Link) => {
+    data.workspaceId = workspaceId;
     const response = await linkModel.create(data);
     return response;
   },
   get: async (id: number) => {
-    const response = await linkModel.get(id);
+    const response = await linkModel.getAll(id);
     return response;
   },
   getAll: async (workspaceId: number) => {
@@ -15,7 +16,7 @@ export default {
     return response;
   },
   update: async (id:number, data:Link) => {
-    const response = await linkModel.update(id,data);
+    const response = await linkModel.update(id, data);
     return response;
   },
   delete: async (id:number) => {
@@ -23,4 +24,4 @@ export default {
     return response;
   },
 
-}
+};

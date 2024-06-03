@@ -1,7 +1,8 @@
 import WorkspaceModel from '../models/workspace.model';
 import { Workspace } from '../models/workspace.model';
 export default {
-  create: async (data: Workspace) => {
+  create: async (userId:number, data: Workspace) => {
+    data.userId = userId;
     const response = await WorkspaceModel.create(data);
     return response;
   },
@@ -26,4 +27,4 @@ export default {
 
     return response;
   },
-}
+};

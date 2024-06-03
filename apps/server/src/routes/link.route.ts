@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import linkController from '../controllers/link.controller';
 const router = Router();
+import { authMiddleware } from '../middlewares/auth.middleware';
+router.use(authMiddleware);
 
 router.post('/create', linkController.create);
 router.put('/update/:id', linkController.update);

@@ -10,7 +10,7 @@ dotenv.config();
 import { AuthUtils, JwtUtils } from '../utils';
 import { User } from '../models/user.model';
 import UserModel from '../models/user.model';
-
+import { client } from '../utils/caching.utils';
 export interface Token {
   token: string;
 }
@@ -28,7 +28,8 @@ export interface Token {
 export const signUp = async (user: User): Promise<Token> => {
   const hashedPassword = await AuthUtils.hashPassword(user.password);
   const newUser: User = await UserModel.create({ ...user, password: hashedPassword });
-  const token = await JwtUtils.signToken({ email: newUser.email, username: newUser.username }, process.env.JWT_SECRET ?? 'defaultSecret');
+  await client.set(user.username, user.email);
+  const token = await JwtUtils.signToken({ id:user.id, email: newUser.email, username: newUser.username }, process.env.JWT_SECRET ?? 'defaultSecret');
 
   return { token };
 };
@@ -42,9 +43,12 @@ export const signIn = async (email: string, password: string): Promise<string> =
   if (!isValid) {
     throw new Error('Invalid password');
   }
-  const token = await JwtUtils.signToken({ email: user.email, username: user.username }, process.env.JWT_SECRET ?? 'defaultSecret');
+  await client.set(user.username, user.email);
+  const token = await JwtUtils.signToken({ id:user.id, email: user.email, username: user.username }, process.env.JWT_SECRET ?? 'defaultSecret');
   return token;
 };
+// const value = await client.get('key');
+
 /*
  * The list below quickly summarizes these steps:
 
@@ -60,6 +64,3 @@ export const signIn = async (email: string, password: string): Promise<string> =
  * If you call the Google OAuth 2.0 endpoint directly, you'll generate a URL and set the parameters on that URL.
  * 
  */
-export const oAuth = async () => {
-
-};

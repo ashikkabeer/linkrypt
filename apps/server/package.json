@@ -27,7 +27,8 @@
     "googleapis": "^137.1.0",
     "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "redis": "^4.6.14"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
