@@ -4,6 +4,9 @@
 node_modules
 .pnp
 .pnp.js
+apps/server/node_modules
+apps/server/client_secret_729179796650-a1gkid2rj2t8igsd3hni4isradf40b4h.apps.googleusercontent.com.json
+apps/server/.env
 
 # Local env files
 .env

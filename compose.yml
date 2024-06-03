@@ -1,0 +1,32 @@
+#DATABASE_URL
+
+services:
+  dev-db:
+    image: postgres:13
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: linkrypt
+    networks:
+      - linkrypt
+
+#   test-db:
+#     image: postgres:13
+#     ports:
+#       - 5400:5432
+#     environment:
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: 123
+#       POSTGRES_DB: linkrypt
+#     networks:
+#       - linkrypt
+networks:
+  linkrypt:
+  
+
+
+
+
+    
