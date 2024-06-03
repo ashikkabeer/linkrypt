@@ -18,11 +18,21 @@ export default {
       },
     });
   },
+
   get: async (email: string) => {
     return prisma.user.findUnique({
       where: {
         email: email,
       },
     });
-  }, 
+  },
+
+  delete: async (id: number) => {
+    return prisma.user.delete({
+      where: {
+        id: id,
+      },
+    });
+  },
+
 };

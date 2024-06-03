@@ -9,7 +9,12 @@ import indexRouter from './routes/index';
 require('dotenv').config();
 
 const app = express();
-app.use(session());
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true },
+}));
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());

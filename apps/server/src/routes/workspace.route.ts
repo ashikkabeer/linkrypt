@@ -7,5 +7,4 @@ router.get('/read',workspaceController.read);
 router.put('/update',workspaceController.update);
 router.delete('/delete',workspaceController.delete);
 
-
 export default router
