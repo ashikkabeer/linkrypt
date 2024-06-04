@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export interface User {
-  id: number;
+  id: string;
   email: string;
   password: string;
   username: string;
@@ -27,7 +27,7 @@ export default {
     });
   },
 
-  delete: async (id: number) => {
+  delete: async (id: string) => {
     return prisma.user.delete({
       where: {
         id: id,

@@ -7,6 +7,7 @@ dotenv.config();
 
 export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers.authorization?.split(' ')[1];
+  console.log(token);
   if (!token) {
     return res.status(401).send('Unauthorized');
   }
@@ -14,9 +15,11 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
     // const secret = process.env.JWT_SECRET;
     const secret = 'secret-key';
     const payload = jwt.verify(token, secret);
+    console.log(payload);
     res.locals.payload = payload;
     next();
   } catch (error) {
+    console.log(error);
     if (error instanceof jwt.TokenExpiredError) {
       return res.status(401).send('Token expired');
     } else if (error instanceof jwt.JsonWebTokenError) {

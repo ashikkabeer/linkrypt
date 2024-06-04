@@ -29,7 +29,7 @@ export const signUp = async (user: User): Promise<Token> => {
   const hashedPassword = await AuthUtils.hashPassword(user.password);
   const newUser: User = await UserModel.create({ ...user, password: hashedPassword });
   await client.set(user.username, user.email);
-  const token = await JwtUtils.signToken({ id:user.id, email: newUser.email, username: newUser.username }, process.env.JWT_SECRET ?? 'defaultSecret');
+  const token = await JwtUtils.signToken({ id:user.id, email: newUser.email, username: newUser.username }, process.env.JWT_SECRET ?? 'secret-key');
 
   return { token };
 };
@@ -44,7 +44,7 @@ export const signIn = async (email: string, password: string): Promise<string> =
     throw new Error('Invalid password');
   }
   await client.set(user.username, user.email);
-  const token = await JwtUtils.signToken({ id:user.id, email: user.email, username: user.username }, process.env.JWT_SECRET ?? 'defaultSecret');
+  const token = await JwtUtils.signToken({ id:user.id, email: user.email, username: user.username }, process.env.JWT_SECRET ?? 'secret-key');
   return token;
 };
 // const value = await client.get('key');

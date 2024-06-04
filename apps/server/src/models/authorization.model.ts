@@ -1,7 +1,7 @@
 
 
 export interface Authorization {
-  id?: number;
+  id: string;
   userId: string;
   workspaceId: number;
   createdAt?: Date;

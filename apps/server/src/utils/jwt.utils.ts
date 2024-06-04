@@ -19,7 +19,7 @@ import jwt from 'jsonwebtoken';
 
 //sign jwt token
 export interface Payload {
-  id: number;
+  id: string;
   username: string;
   email: string;
 }

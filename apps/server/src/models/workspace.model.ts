@@ -1,10 +1,13 @@
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
+import { Link } from './link.model';
+
 
 export interface Workspace {
-  id?: number;
+  id?: string;
   name: string;
-  userId: number;
+  userId: string;
+  links: Link[];
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -17,7 +20,7 @@ export default {
       },
     });
   },
-  get: async (id: number) => {
+  get: async (id: string) => {
     return prisma.workspace.findUnique({
       where: {
         id: id,
@@ -25,7 +28,7 @@ export default {
     });
   }, 
 
-  getAll: async (userId: number) => {
+  getAll: async (userId: string) => {
     return prisma.workspace.findMany({
       where: {
         userId: userId,
@@ -33,7 +36,7 @@ export default {
     });
   },
 
-  update: async (id: number, data: Workspace) => {
+  update: async (id: string, data: Workspace) => {
     return prisma.workspace.update({
       where: {
         id: id,
@@ -43,8 +46,21 @@ export default {
       },
     });
   },
-
-  delete: async (id: number) => {
+  addUser: async (id: string, data: Workspace) => {
+    // return prisma.workspace.update({
+    //   where: {
+    //     id: id,
+    //   },
+    //   data: {
+    //     users: {
+    //       connect: {
+    //         id: data.userId,
+    //       },
+    //     },
+    //   },
+    // });
+  },
+  delete: async (id: string) => {
     return prisma.workspace.delete({
       where: {
         id: id,

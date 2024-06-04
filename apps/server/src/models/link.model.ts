@@ -2,10 +2,10 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export interface Link {
-  id?: number;
+  id: string;
   title: string;
   url: string;
-  workspaceId: number;
+  workspaceId: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -20,7 +20,7 @@ export default {
       },
     });
   },
-  get: async (id: number) => {
+  get: async (id: string) => {
     return prisma.link.findUnique({
       where: {
         id: id,
@@ -28,7 +28,7 @@ export default {
     });
   }, 
 
-  getAll: async (workspaceId: number) => {
+  getAll: async (workspaceId: string) => {
     return prisma.link.findMany({
       where: {
         workspaceId: workspaceId,
@@ -36,7 +36,7 @@ export default {
     });
   },
 
-  update: async (id: number, data: Link) => {
+  update: async (id: string, data: Link) => {
     return prisma.link.update({
       where: {
         id: id,
@@ -48,7 +48,7 @@ export default {
     });
   },
 
-  delete: async (id: number) => {
+  delete: async (id: string) => {
     return prisma.link.delete({
       where: {
         id: id,
