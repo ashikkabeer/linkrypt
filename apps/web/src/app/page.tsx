@@ -8,7 +8,7 @@ export default function Home() {
         <div className="w-full"><Navbar /></div>
       </div>
       <div className="md:w-2/3  bg-[#254F1A]  h-screen px-10 flex flex-col  justify-center ">
-        <p className="md:text-6xl text-4xl text leading-[1.1] font-sans font-medium text-[#d2e823]">Sharing and storing links made easier <br />Claim your linkript now</p>
+        <p className="md:text-6xl text-4xl text leading-[1.1] font-sans font-medium text-[#d2e823]">Sharing and storing links made easier <br />Claim your linkrypt now</p>
 
         <p className="pt-3 text-[#d2e823]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate vel voluptates consequatur aliquid minus possimus alias labore aspernatur molestiae dolore eaque, at, maiores neque sunt dicta ullam doloribus autem assumenda repellendus! Nisi?</p>
         <div className="inp w-full pt-5 md:flex flex-row">

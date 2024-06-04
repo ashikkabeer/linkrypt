@@ -11,6 +11,7 @@ export interface Workspace {
   createdAt?: Date;
   updatedAt?: Date;
 }
+
 export default {
   create: async (data: Workspace) => {
     return prisma.workspace.create({
@@ -47,6 +48,7 @@ export default {
     });
   },
   addUser: async (id: string, data: Workspace) => {
+    console.log(id, data);
     // return prisma.workspace.update({
     //   where: {
     //     id: id,

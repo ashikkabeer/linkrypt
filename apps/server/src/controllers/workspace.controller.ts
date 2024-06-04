@@ -27,8 +27,8 @@ export default {
   },
   addUser: async (req:Request, res:Response) => {
     const workspaceId = req.params.id;
-    const data = req.body;
-    const response = await WorkspaceService.addUser(workspaceId, data);
+    const email = req.body.email;
+    const response = await WorkspaceService.addUser(workspaceId, email);
     return res.status(200).send(response);
   },
 
