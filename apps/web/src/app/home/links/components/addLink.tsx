@@ -17,9 +17,7 @@ export default function AddLink() {
           <DialogHeader>
             <DialogTitle>Enter details</DialogTitle>
             <DialogDescription>
-              <div>
                 <LinkForm />
-              </div>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
