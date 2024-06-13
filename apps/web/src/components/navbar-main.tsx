@@ -16,7 +16,7 @@ export default function NavbarMain() {
           <p>Blog</p>
           <p>Support</p>
         </div>
-        <div className="right  flex justify-end w-1/3">
+        <div className="right  flex justify-end space-x-2 w-1/3">
           <Button className='py-1' variant={'secondary'}>Login</Button>
           <Button>Sign Up</Button>
         </div>

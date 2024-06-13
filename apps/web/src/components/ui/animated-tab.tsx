@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-
+import List from "@/app/home/components/list";
 type Tab = {
   title: string;
   value: string;
@@ -118,7 +118,8 @@ export const FadeInDiv = ({
             }}
             className={cn("w-full h-full absolute top-0 left-0", className)}
           >
-            {tab.content}
+            {/* {tab.content} */}
+            <List />
           </motion.div>
         )
 
