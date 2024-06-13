@@ -10,14 +10,19 @@ require('dotenv').config();
 
 const app = express();
 app.use(session({
-  secret: 'keyboard cat',
+  secret: 'change this later',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: true },
 }));
 app.use(morgan('dev'));
 app.use(helmet());
-app.use(cors());
+app.use(cors(
+  {
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  },
+));
 app.use(express.json());
 
 app.get<{}, MessageResponse>('/', (req, res) => {

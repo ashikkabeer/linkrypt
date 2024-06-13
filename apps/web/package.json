@@ -24,6 +24,7 @@
     "@repo/ui": "*",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "cookies-next": "^4.2.1",
     "framer-motion": "^11.2.10",
     "lucide-react": "^0.381.0",
     "next": "14.2.3",

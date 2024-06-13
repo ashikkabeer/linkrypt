@@ -24,14 +24,23 @@ export interface Token {
   * @throws {Error} email already exists
   * @throws {Error} invalid token
   * @throws {Error} invalid signature
+  * TODO: implement email verification
 */
-export const signUp = async (user: User): Promise<Token> => {
-  const hashedPassword = await AuthUtils.hashPassword(user.password);
-  const newUser: User = await UserModel.create({ ...user, password: hashedPassword });
-  await client.set(user.username, user.email);
-  const token = await JwtUtils.signToken({ id:user.id, email: newUser.email, username: newUser.username }, process.env.JWT_SECRET ?? 'secret-key');
+export const signUp = async (user: User): Promise<Token | Error >=> {
+  try {
+    const hashedPassword = await AuthUtils.hashPassword(user.password);
+    const newUser: User = await UserModel.create({ ...user, password: hashedPassword });
+    if (!newUser) {
+      throw new Error('Invalid email or username, try another');
+    }
+    await client.set(user.username, user.email);
+    const token = await JwtUtils.signToken({ id: user.id, email: newUser.email, username: newUser.username }, process.env.JWT_SECRET ?? 'secret-key');
 
-  return { token };
+    return { token };
+  } catch (error) {
+    console.error(error);
+    return new Error('Invalid email or username, try another');
+  }
 };
 
 export const signIn = async (email: string, password: string): Promise<string> => {
@@ -44,7 +53,7 @@ export const signIn = async (email: string, password: string): Promise<string> =
     throw new Error('Invalid password');
   }
   await client.set(user.username, user.email);
-  const token = await JwtUtils.signToken({ id:user.id, email: user.email, username: user.username }, process.env.JWT_SECRET ?? 'secret-key');
+  const token = await JwtUtils.signToken({ id: user.id, email: user.email, username: user.username }, process.env.JWT_SECRET ?? 'secret-key');
   return token;
 };
 // const value = await client.get('key');

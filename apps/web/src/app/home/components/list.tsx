@@ -7,42 +7,75 @@ import { toast } from "sonner"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { Slider } from "@/components/ui/slider"
 import { DirectionAwareTabs } from "./ui/direction-aware-tabs"
 
 import SortableList, {Item,SortableListItem} from "./sortable-list"
 
 const initialState = [
   {
-    text: "Gather Data",
+    text: "Plan Venue",
     checked: false,
     id: 1,
     description:
-      "Collect relevant marketing copy from the user's website and competitor sites to understand the current market positioning and identify potential areas for improvement.",
+      "Research and select a suitable venue for the event, taking into consideration factors such as capacity, location, amenities, and cost.",
   },
   {
-    text: "Analyze Copy",
+    text: "Plan Venue",
     checked: false,
-    id: 2,
+    id: 10,
     description:
-      "As an AI language model, analyze the collected marketing copy for clarity, persuasiveness, and alignment with the user's brand voice and target audience. Identify strengths, weaknesses, and opportunities for optimization.",
+      "Research and select a suitable venue for the event, taking into consideration factors such as capacity, location, amenities, and cost.",
   },
   {
-    text: "Create Suggestions",
+    text: "Plan Venue",
+    checked: false,
+    id: 12,
+    description:
+      "Research and select a suitable venue for the event, taking into consideration factors such as capacity, location, amenities, and cost.",
+  },
+  {
+    text: "Plan Venue",
+    checked: false,
+    id: 31,
+    description:
+      "Research and select a suitable venue for the event, taking into consideration factors such as capacity, location, amenities, and cost.",
+  },
+  {
+    text: "Plan Venue",
+    checked: false,
+    id: 41,
+    description:
+      "Research and select a suitable venue for the event, taking into consideration factors such as capacity, location, amenities, and cost.",
+  },
+  {
+    text: "Invite Speakers",
+    checked: false,
+    id: 22,
+    description:
+      "Identify and invite relevant speakers or presenters for the event, ensuring they align with the event theme and target audience.",
+  },
+  {
+    text: "Organize Logistics",
     checked: false,
     id: 3,
     description:
-      "Using natural language generation techniques, create alternative versions of the marketing copy that address the identified weaknesses and leverage the opportunities for improvement. Ensure the generated copy is compelling, on-brand, and optimized for the target audience.",
+      "Coordinate and manage logistics for the event, including transportation, accommodation, equipment, and supplies.",
   },
   {
-    text: "Recommendations",
+    text: "Promote Event",
+    checked: false,
+    id: 4,
+    description:
+      "Develop and implement a marketing strategy to promote the event, utilizing various channels such as social media, email marketing, and online advertising.",
+  },
+  {
+    text: "Manage Registrations",
     checked: false,
     id: 5,
     description:
-      "Present the AI-generated marketing copy suggestions to the user, along with insights on why these changes were recommended. Provide a user-friendly interface for the user to review, edit, and implement the optimized copy on their website.",
+      "Set up a registration system to track and manage attendee registrations, including ticket sales, attendee information, and communication.",
   },
-]
-
+];
 function List() {
   const [items, setItems] = useState<Item[]>(initialState)
   const [openItemId, setOpenItemId] = useState<number | null>(null)
@@ -60,6 +93,7 @@ function List() {
   }
 
   const handleAddItem = () => {
+
     setItems((prevItems) => [
       ...prevItems,
       {
